@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 var fs = require("fs");
 const tabletojson = require('tabletojson').Tabletojson;
 
-class Scraper{
+module.exports = class Scraper{
     url = ''
     tableIndex = 0;
     replaces= [];

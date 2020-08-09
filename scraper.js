@@ -53,7 +53,7 @@ module.exports = class Scraper{
 
     replace(val){
         if(val)
-            this.replaces.forEach(({from,to, exactly, maxCharDiff, type}) => {
+            this.replaces.forEach(({from,to, exactly, maxCharDiff}) => {
                 val = val.trim();
                 if(exactly && val === from) {
                     val = to;
@@ -74,9 +74,9 @@ module.exports = class Scraper{
     replaceAll(json){
         return json.map(row => {
             var newRow = {};
-            Object.keys(row).forEach(key => {
+            for(var key in row) {
                 newRow[this.replace(key)] = this.replace(row[key]);
-            })
+            }
             return newRow;
         })
     }
@@ -98,17 +98,17 @@ module.exports = class Scraper{
             'Sell'
         ];
 
-        replacedJson.forEach(row => {
+        for(var row of replacedJson){
             if(validCurrencies.includes(row.Currency)){
                 var newRow = {};
-                Object.keys(row).forEach(key => {
+                for(var key in row){
                     if(validHeaders.includes(key)){
                         newRow[key] = row[key];
                     }
-                })
+                }
                 json[row.Currency] = newRow;
             }
-        })
+        }
         
         return json;
     }

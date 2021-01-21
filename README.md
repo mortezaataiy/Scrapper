@@ -7,7 +7,7 @@ An example of Scraper used for http://www.zarban.ca/
 ## Test:
 Run `npm i && npm start`
 
-## Exaple output:
+## Example output:
 ```
 {
   CAD: { Date: 'Aug 5-11:20', Buy: '17,750', Sell: '17,950' },
